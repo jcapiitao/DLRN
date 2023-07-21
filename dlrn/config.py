@@ -42,6 +42,7 @@ def _default_templatedir():
 DLRN_CORE_CONFIG = {
     'DEFAULT': {
         'tags': {},
+        'buildsys_tags': {},
         'datadir': {'default': _default_datadir()},
         'gerrit': {},
         'maxretries': {'type': 'int', 'default': 3},

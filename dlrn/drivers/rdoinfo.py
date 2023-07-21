@@ -64,9 +64,11 @@ class RdoInfoDriver(PkgInfoDriver):
         :param local_info_repo: local rdoinfo repo to use instead of fetching
                                 the default one using rdopkg.
         :param tags: OpenStack release tags to use (mitaka, newton, etc).
+        :param buildsys_tags: OpenStack release buildsys-tags to use.
         """
         local_info_repo = kwargs.get('local_info_repo')
         tags = kwargs.get('tags')
+        buildsys_tags = kwargs.get('buildsys_tags')
         inforepo = None
         info_files = self.config_options.rdoinfo_file
 
@@ -112,6 +114,9 @@ class RdoInfoDriver(PkgInfoDriver):
         if tags:
             # FIXME allow list of tags?
             self.packages = query.filter_pkgs(self.packages, {'tags': tags})
+        if buildsys_tags:
+            self.packages = query.filter_pkgs(self.packages,
+                                              {'buildsys-tags': buildsys_tags})
         return self.packages
 
     def getinfo(self, **kwargs):

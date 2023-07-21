@@ -217,6 +217,7 @@ def main():
     pkginfo = import_object(pkginfo_driver, cfg_options=config_options)
     packages = pkginfo.getpackages(local_info_repo=options.info_repo,
                                    tags=config_options.tags,
+                                   buildsys_tags=config_options.buildsys_tags,
                                    dev_mode=options.dev)
 
     if options.project_name:
